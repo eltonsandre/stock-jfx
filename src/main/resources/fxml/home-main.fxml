@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXBadge?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import com.github.eltonsandre.app.jfx.component.GlyphIcon?>
+
+<BorderPane id="mainView" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../assets/css/dark-theme.css"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.github.eltonsandre.app.controller.MainController">
+
+    <top>
+        <HBox>
+            <JFXHamburger fx:id="hamburger" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" opacity="0.36" prefHeight="40.0"
+                          prefWidth="950.0">
+                <padding>
+                    <Insets left="30.0" right="30.0"/>
+                </padding>
+                <cursor>
+                    <Cursor fx:constant="OPEN_HAND"/>
+                </cursor>
+            </JFXHamburger>
+            <JFXBadge fx:id="homeMsg" position="TOP_RIGHT" styleClass="icons-badge" text="1">
+                <StackPane prefHeight="40.0" prefWidth="39.0" style="-fx-padding: 10;">
+                    <GlyphIcon name="bell" size="24" styleClass="icon"/>
+                </StackPane>
+            </JFXBadge>
+        </HBox>
+    </top>
+
+    <left>
+        <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" prefHeight="700" prefWidth="150">
+        </JFXDrawer>
+    </left>
+
+    <center>
+        <ImageView fx:id="imageMain" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER"/>
+    </center>
+
+    <stylesheets>
+        <URL value="@../assets/css/application.css"/>
+        <URL value="@../assets/css/dark-theme.css"/>
+    </stylesheets>
+
+</BorderPane>

@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: app-sample-produtos
+  output.ansi.enabled: ALWAYS
+
+  profiles:
+    active:
+      - debug-mode
+      - mysql
+
+  http.encoding:
+    charset: UTF-8
+    enabled: true
+    force: true
+
+  jackson:
+    time-zone: Brazil/East
+    locale: pt_BR
+    default-property-inclusion: NON_NULL
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+
+---
+spring:
+  config.activate.on-profile: debug-mode
+
+logging.level:
+  com.github.eltonsandre: debug
+  org.springframework:
+    cache: debug
+    web: debug
+
+---
+server.port: 80
+spring:
+  config.activate.on-profile: docker
+
+  datasource:
+    username: root
+    url: jdbc:mysql://mysql:3306/loja_db?useSSL=false
+
+---
+spring:
+  config.activate.on-profile: mysql
+
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/loja_db?createDatabaseIfNotExist=true&serverTimeZone=UTC&useSSL=false
+    username: root
+    password: root
+    initialization-mode: always
+
+---
+spring:
+  config.activate.on-profile: h2
+
+  datasource:
+    platform: h2
+    initialization-mode: always
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./data/database;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="categoryItemRegistrationView" minHeight="0.0" minWidth="0.0" prefHeight="403.0" prefWidth="479.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.eltonsandre.app.controller.category.CategoryItemRegistrationController">
+
+    <GridPane layoutX="50.0" layoutY="20.0" prefHeight="350.0" prefWidth="450.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="119.0" minWidth="10.0" prefWidth="102.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="185.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+
+        <JFXTextField fx:id="txtId" editable="false" labelFloat="true" opacity="0.5" promptText="%id" GridPane.columnIndex="1"/>
+
+        <JFXTextField fx:id="txtName" labelFloat="true" promptText="%category.name" GridPane.columnIndex="1" GridPane.columnSpan="2"
+                      GridPane.rowIndex="1"/>
+
+        <JFXComboBox fx:id="cboxCategoryType" labelFloat="true" prefHeight="31.0" prefWidth="192.0" promptText="%category.type" GridPane.columnIndex="1"
+                     GridPane.halignment="LEFT" GridPane.rowIndex="2"/>
+
+        <JFXTextArea fx:id="txtObservation" labelFloat="true" prefHeight="122.0" prefWidth="229.0" promptText="%default.observation" wrapText="true"
+                     GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <HBox layoutX="563.0" layoutY="287.0" spacing="15.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+        <JFXButton fx:id="btnSave" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#actionSave"
+                   styleClass="confirmation" text="%button.save"/>
+
+        <JFXButton fx:id="btnNew" mnemonicParsing="false" onAction="#actionNew" styleClass="default" text="%button.new"/>
+    </HBox>
+
+</AnchorPane>

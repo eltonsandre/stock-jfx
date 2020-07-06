@@ -1,0 +1,176 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+ext {
+    set 'openjfxVersion', '15.0.1' // '11.0.2'
+    set 'jfxtrasVersion', '15-r1' //'10.0-r1'
+    set 'jfoenixVersion', '9.0.10'
+    set 'datafxVersion', '8.0.1'
+
+    set 'jacksonVersion', '2.11.0'
+    set 'mapstructVersion', '1.4.1.Final'
+    set 'springCloudVersion', '2020.0.0'
+}
+
+
+group = 'com.github.eltonsandre'
+version = '0.0.1-SNAPSHOT'
+mainClassName = "${group}.app.StockApplication"
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+compileJava.options.encoding = "UTF-8"
+compileJava.dependsOn(processResources)
+compileJava.options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+compileJava.options.compilerArgs = ['-parameters', '-Amapstruct.defaultComponentModel=spring']
+
+compileTestJava.options.encoding = compileJava.options.encoding
+compileTestJava.options.compilerArgs = compileJava.options.compilerArgs
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'http://repo.maven.apache.org/maven2' }
+}
+
+dependencies {
+//    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    ['annotationProcessor', 'compileOnly', 'testAnnotationProcessor', 'testCompileOnly']
+            .each { conf -> add(conf, 'org.projectlombok:lombok') }
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor',
+            "org.mapstruct:mapstruct-processor:$mapstructVersion"
+
+
+    implementation "org.openjfx:javafx-controls:$openjfxVersion",
+            "org.openjfx:javafx-fxml:$openjfxVersion",
+            "org.openjfx:javafx-graphics:$openjfxVersion",
+
+            "com.jfoenix:jfoenix:$jfoenixVersion",
+
+            "io.datafx:datafx:$datafxVersion",
+            "io.datafx:flow:$datafxVersion",
+
+            'org.kordamp.ikonli:ikonli-javafx:11.5.0',
+            'org.kordamp.ikonli:ikonli-material-pack:11.5.0',
+            'org.kordamp.ikonli:ikonli-fontawesome5-pack:11.5.0',
+
+            "org.jfxtras:jfxtras-common:$jfxtrasVersion",
+            "org.jfxtras:jfxtras-fxml:$jfxtrasVersion",
+            "org.jfxtras:jfxtras-font-roboto:$jfxtrasVersion",
+            "org.jfxtras:jfxtras-menu:$jfxtrasVersion",
+            "org.jfxtras:jfxtras-controls:$jfxtrasVersion",
+
+            'io.vavr:vavr:0.10.3',
+            "org.apache.commons:commons-lang3:3.9",
+            "org.apache.commons:commons-collections4:4.4",
+//          'org.flywaydb:flyway-core",
+            'org.springframework.boot:spring-boot-starter',
+            'org.springframework.boot:spring-boot-starter-data-jpa',
+            'org.springframework.boot:spring-boot-starter-validation',
+            'org.mapstruct:mapstruct-jdk8:1.3.1.Final',
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+
+    runtimeOnly 'com.h2database:h2',
+            'mysql:mysql-connector-java'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+clean.doFirst {
+    delete 'build', 'out', 'dist'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+applicationDefaultJvmArgs = [
+        '--module-path', '/opt/java/javafx-sdk-15.0.1/lib',
+        '--add-modules', 'javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web',
+        '--add-opens', 'javafx.fxml/javafx.fxml=ALL-UNNAMED',
+        '--add-opens', 'javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED',
+        '--add-opens', 'javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED',
+        '--add-opens', 'javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED',
+        '--add-exports', 'javafx.base/com.sun.javafx.event=ALL-UNNAMED',
+        '--add-exports', 'javafx.base/com.sun.javafx.binding=ALL-UNNAMED',
+        '--add-exports', 'javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED',
+        '--add-exports', 'javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED',
+        '--add-exports', 'javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED',
+        '--add-exports', 'javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED',
+]
+
+javafx {
+    version = openjfxVersion
+    modules = ['javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.media', 'javafx.swing', 'javafx.web']
+}
+
+//jlink {
+//    launcher {
+//        name = project.group
+//    }
+//}
+
+/*
+applicationDefaultJvmArgs = [
+'--module-path','/opt/java/javafx-sdk-15.0.1/lib'
+'--add-modules','javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web" --add-opens="javafx.fxml/javafx
+.fxml=ALL-UNNAMED'
+
+        '--add-opens', 'javafx.base/com.sun.javafx.beans=ALL-UNNAMED',
+        '--add-opens', 'javafx.base/com.sun.javafx.binding=ALL-UNNAMED',
+        '--add-opens', 'javafx.base/com.sun.javafx.collections=ALL-UNNAMED',
+        '--add-opens', 'javafx.base/com.sun.javafx.event=ALL-UNNAMED',
+        '--add-opens', 'javafx.base/com.sun.javafx.logging=ALL-UNNAMED',
+        '--add-opens', 'javafx.base/com.sun.javafx.reflect=ALL-UNNAMED',
+        '--add-opens', 'javafx.base/com.sun.javafx.runtime=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.application=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.geom=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.tk=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.scene.layout=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.scene.text=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.scene.input=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.scene.traversal=ALL-UNNAMED',
+        '--add-opens', 'javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED',
+        '--add-opens', 'javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED',
+        '--add-opens', 'javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED',
+]
+ */
+/* VM options in DEBUG
+--module-path="/opt/java/javafx-sdk-15.0.1/lib"
+--add-modules="javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web" --add-opens="javafx.fxml/javafx.fxml=ALL-UNNAMED"
+--add-opens="javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED"
+--add-opens="javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED"
+--add-opens="javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED"
+--add-exports="javafx.base/com.sun.javafx.event=ALL-UNNAMED"
+--add-exports="javafx.base/com.sun.javafx.binding=ALL-UNNAMED"
+--add-exports="javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED"
+--add-exports="javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED"
+--add-exports="javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED"
+--add-exports="javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED"
+ */

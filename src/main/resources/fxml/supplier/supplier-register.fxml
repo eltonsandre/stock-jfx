@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="supplierView" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.github.eltonsandre.app.controller.supplier.SupplierRegisterController"
+            minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0">
+
+    <GridPane layoutX="15.0" layoutY="19.0" prefHeight="422.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="216.0" minWidth="10.0" prefWidth="60.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="289.0" minWidth="10.0" prefWidth="131.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="144.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="146.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="215.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="74.0"/>
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints fillHeight="false" maxHeight="60.0" minHeight="10.0" prefHeight="60.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+            <RowConstraints fillHeight="false" maxHeight="60.0" minHeight="10.0" prefHeight="60.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+            <RowConstraints fillHeight="false" maxHeight="60.0" minHeight="10.0" prefHeight="60.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+            <RowConstraints fillHeight="false" maxHeight="50.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+        </rowConstraints>
+
+        <JFXTextField fx:id="txtId" editable="false" labelFloat="true" opacity="0.5" promptText="%id" GridPane.columnIndex="1"/>
+
+        <JFXTextField fx:id="txtTradingName" labelFloat="true" promptText="%default.trading-name" GridPane.columnIndex="1" GridPane.columnSpan="3"
+                      GridPane.rowIndex="1"/>
+
+        <JFXTextField fx:id="txtCompanyName" labelFloat="true" promptText="%default.company-name" GridPane.columnIndex="1" GridPane.columnSpan="3"
+                      GridPane.rowIndex="2"/>
+
+        <JFXTextField fx:id="txtCnpj" labelFloat="true" prefWidth="313.0" promptText="CNPJ" GridPane.columnIndex="1"
+                      GridPane.columnSpan="2" GridPane.rowIndex="3"/>
+
+        <JFXTextField fx:id="txtPhoneNumber" labelFloat="true" promptText="%default.phone" GridPane.columnIndex="1" GridPane.columnSpan="2"
+                      GridPane.rowIndex="4"/>
+
+        <JFXTextField fx:id="txtPublicArea" labelFloat="true" prefWidth="275.0" promptText="%default.public-area" GridPane.columnIndex="2"
+                      GridPane.columnSpan="3" GridPane.rowIndex="5"/>
+
+        <JFXTextField fx:id="txtDistrict" labelFloat="true" promptText="%default.district" GridPane.columnIndex="1" GridPane.columnSpan="2"
+                      GridPane.rowIndex="6"/>
+        <JFXTextField fx:id="txtCity" labelFloat="true" promptText="%default.city" GridPane.columnIndex="1" GridPane.columnSpan="2"
+                      GridPane.rowIndex="7"/>
+
+        <JFXTextField fx:id="txtCep" labelFloat="true" promptText="CEP" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        <JFXTextField fx:id="txtEmail" promptText="E-mail" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4"/>
+
+        <JFXComboBox fx:id="cmbBoxUF" labelFloat="true" prefWidth="147.0" promptText="UF" GridPane.columnIndex="3" GridPane.rowIndex="7"/>
+    </GridPane>
+
+    <HBox spacing="15.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+        <JFXButton fx:id="btnSave" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#actionSave"
+                   styleClass="confirmation" text="%button.save"/>
+
+        <JFXButton fx:id="btnNew" mnemonicParsing="false" onAction="#actionNew" styleClass="neutral" text="%button.new"/>
+    </HBox>
+
+    <stylesheets>
+        <java.net.URL value="@../../assets/css/application.css"/>
+        <java.net.URL value="@../../assets/css/dark-theme.css"/>
+    </stylesheets>
+</AnchorPane>

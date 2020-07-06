@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.github.eltonsandre.app.jfx.component.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="544.0" prefWidth="225.0" styleClass="toolbar-container" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.eltonsandre.app.controller.components.ToolbarController">
+
+    <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadItemView" prefHeight="110.0" prefWidth="220.0" styleClass="toolbar-button" text="%itens" textAlignment="CENTER">
+        <graphic>
+            <GlyphIcon name="barcode2" size="24" styleClass="icon" />
+        </graphic>
+    </JFXButton>
+
+    <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadGroupItemView" prefHeight="110.0" prefWidth="220.0" styleClass="toolbar-button" text="%category-item" textAlignment="CENTER">
+        <graphic>
+            <GlyphIcon name="qrcode" size="24" styleClass="icon" />
+        </graphic>
+    </JFXButton>
+
+    <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#loadStockView" prefHeight="110.0" prefWidth="220.0" styleClass="toolbar-button" text="%stock" textAlignment="CENTER">
+        <graphic>
+            <GlyphIcon name="stack" size="24" styleClass="icon" />
+        </graphic>
+    </JFXButton>
+
+    <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadSupplierView" prefHeight="110.0" prefWidth="220.0" styleClass="toolbar-button" text="%suppliers" textAlignment="CENTER">
+        <graphic>
+            <GlyphIcon name="user-tie" size="24" styleClass="icon" />
+        </graphic>
+    </JFXButton>
+
+    <JFXButton contentDisplay="TOP" onAction="#loadDepartamentView" prefHeight="110.0" prefWidth="220.0" styleClass="toolbar-button icon star" text="%departaments" textAlignment="CENTER">
+        <graphic>
+            <GlyphIcon name="suitcase" size="24" styleClass="icon" />
+        </graphic>
+    </JFXButton>
+
+    <JFXButton contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="223.0" onAction="#loadSettingsView" prefHeight="110.0" prefWidth="220.0" styleClass="toolbar-button" text="%settings" textAlignment="CENTER">
+        <graphic>
+            <GlyphIcon disable="true" name="cogs2" size="24" styleClass="icon" />
+        </graphic>
+    </JFXButton>
+
+    <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="271.0" mnemonicParsing="false" onAction="#exit" prefHeight="110.0" prefWidth="220.0" styleClass="toolbar-button" text="%exit">
+        <graphic>
+            <GlyphIcon name="sign-out" size="24" styleClass="icon" />
+        </graphic>
+    </JFXButton>
+
+    <stylesheets>
+        <URL value="@../../assets/css/application.css" />
+        <URL value="@../../assets/css/dark-theme.css" />
+    </stylesheets>
+
+</VBox>
