@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="departamentRegisterView" xmlns="http://javafx.com/javafx/11.0.2"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.eltonsandre.app.controller.departament.DepartmentRegisterController"
+            minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0">
+
+    <GridPane layoutX="50.0" layoutY="23.0" prefHeight="346.0" prefWidth="770.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.0" minWidth="10.0" prefWidth="163.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="418.0" minWidth="10.0" prefWidth="369.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="120.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0"/>
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+
+        <JFXTextField fx:id="txtId" editable="false" labelFloat="true" promptText="%id" GridPane.columnIndex="1"/>
+
+        <JFXTextField fx:id="txtName" labelFloat="true" promptText="%departament.name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1"/>
+
+        <JFXTextField fx:id="txtPersonResponsible" labelFloat="true" prefWidth="530.0" promptText="%departament.person-responsible"
+                      GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
+
+        <JFXTextArea fx:id="txtDescription" labelFloat="true" prefHeight="68.0" prefWidth="530.0" promptText="%departament.description" GridPane.columnIndex="1"
+                     GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2"/>
+
+    </GridPane>
+
+    <HBox spacing="15.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+        <JFXButton id="btnSave" fx:id="btnSave" buttonType="RAISED" disable="true" mnemonicParsing="false" onAction="#actionSave"
+                   styleClass="confirmation" text="%button.save"/>
+
+        <JFXButton id="btnNew" fx:id="btnNew" buttonType="RAISED" defaultButton="true" mnemonicParsing="false" onAction="#actionNew"
+                   styleClass="neutral" text="%button.new"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../../assets/css/application.css"/>
+        <URL value="@../../assets/css/dark-theme.css"/>
+    </stylesheets>
+
+</AnchorPane>

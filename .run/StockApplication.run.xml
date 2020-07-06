@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="StockApplication" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="com.github.eltonsandre.app.StockApplication" />
+    <module name="stock-jfx.main" />
+    <option name="VM_PARAMETERS" value="--module-path=&quot;/opt/java/javafx-sdk-15.0.1/lib&quot; --add-modules=&quot;javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web&quot; --add-opens=&quot;javafx.fxml/javafx.fxml=ALL-UNNAMED&quot; --add-opens=&quot;javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED&quot; --add-opens=&quot;javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED&quot; --add-opens=&quot;javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED&quot; --add-exports=&quot;javafx.base/com.sun.javafx.event=ALL-UNNAMED&quot; --add-exports=&quot;javafx.base/com.sun.javafx.binding=ALL-UNNAMED&quot; --add-exports=&quot;javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED&quot; --add-exports=&quot;javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED&quot; --add-exports=&quot;javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED&quot; --add-exports=&quot;javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED&quot;" />
+    <extension name="com.egoshard.intellij.k8s-runtime-config-plugin">
+      <option name="ENABLED" value="false" />
+      <entries />
+    </extension>
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.github.eltonsandre.app.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

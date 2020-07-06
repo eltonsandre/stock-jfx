@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+
+  mysql:
+    hostname: mysql
+    container_name: mysql
+    image: mysql:5.7
+    restart: unless-stopped
+    ports:
+      - 3306
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./data:/var/lib/mysql
+
+    environment:
+      HIST_FILE: /root/.bash_history
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: loja_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 1234
+      # Novo usuário:
+      # CREATE USER 'username'@'localhost' IDENTIFIED BY 'passwor';
+      # GRANT ALL PRIVILEGES ON * . * TO 'username'@'localhost';
+      # FLUSH PRIVILEGES;
+    command:
+      - mysqld
+      - --explicit_defaults_for_timestamp
+      - --character-set-server=utf8mb4
+      - --skip-character-set-client-handshake
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-name-resolve
+      - --sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+    network_mode: host
+    logging:
+      driver: json-file
+      options:
+        max-size: "250m"
+        max-file: "10"
+
+volumes:
+  data: { }

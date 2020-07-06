@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox id="registryButtons" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" spacing="15.0" AnchorPane.bottomAnchor="15.0"
+      AnchorPane.rightAnchor="15.0">
+
+    <JFXButton id="btnSave" fx:id="btnSave" buttonType="RAISED" defaultButton="true" disable="true" mnemonicParsing="false"
+               text="Salvar" onAction="#actionSave"/>
+
+    <JFXButton id="btnNew" fx:id="btnNew" buttonType="RAISED" defaultButton="true" mnemonicParsing="false" text="Novo"
+               onAction="#actionNew"/>
+</HBox>

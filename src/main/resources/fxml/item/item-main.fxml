@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="anchorPaneParent" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.eltonsandre.app.controller.item.ItemController">
+
+    <Label styleClass="title" text="%itens" />
+
+    <JFXTabPane fx:id="tabPane" layoutX="14.0" layoutY="61.0" prefHeight="539.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
+
+        <Tab fx:id="tabSearch" text="%search">
+            <AnchorPane id="anchorSearch">
+
+                <HBox AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="25.0">
+                    <JFXComboBox fx:id="cboxSearchOptions" labelFloat="true" promptText="Tipo">
+                        <!--                        <items><FXCollections fx:factory="observableArrayList"><String fx:value="Produto"/><String fx:value="Serviço"/></FXCollections></items><value><String fx:value="Serviço"/></value>-->
+                    </JFXComboBox>
+                    <JFXTextField fx:id="txtSearch" labelFloat="true" nodeOrientation="LEFT_TO_RIGHT" promptText="%item.search.filter-name" HBox.hgrow="ALWAYS" />
+
+                    <JFXButton fx:id="btnSearch" onAction="#actionSearch" text="%search" />
+                </HBox>
+
+                <TableView fx:id="tableView" layoutX="83.0" layoutY="102.0" prefHeight="323.0" prefWidth="770.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="102.0">
+                    <columns>
+                        <TableColumn fx:id="colId" editable="false" minWidth="65.0" prefWidth="100.0" text="%id" />
+                        <TableColumn fx:id="colName" editable="false" minWidth="100.0" prefWidth="300.0" text="%default.name" />
+                        <TableColumn fx:id="colStockQuantity" editable="false" minWidth="50.0" prefWidth="100.0" text="%item.stock-quantity" />
+                        <TableColumn fx:id="colLastStockUpdate" prefWidth="75.0" text="%default.last-update" />
+                    </columns>
+
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+
+                <JFXButton fx:id="btnDelete" cancelButton="true" disable="true" layoutX="15.0" layoutY="445.0" mnemonicParsing="false" onAction="#actionDelete" styleClass="cancel" text="%button.delete" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="15.0" />
+
+                <HBox layoutX="300.0" layoutY="485.0" AnchorPane.bottomAnchor="15.0" >
+                    <Pagination fx:id="pagination" pageCount="5" prefHeight="52.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <HBox layoutX="647.0" layoutY="515.0" spacing="15.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                    <JFXButton fx:id="btnEdit" disable="true" layoutX="647.0" layoutY="515.0" mnemonicParsing="false" onAction="#actionEdit" styleClass="default" text="%button.edit" />
+
+                    <JFXButton fx:id="btnNew" defaultButton="true" layoutX="721.0" layoutY="509.0" mnemonicParsing="false" onAction="#actionNew" styleClass="default" text="%button.new" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+                </HBox>
+            </AnchorPane>
+        </Tab>
+
+        <Tab fx:id="tabRegister" text="%register">
+             <fx:include source="item-register.fxml" />
+        </Tab>
+
+    </JFXTabPane>
+
+    <stylesheets>
+        <java.net.URL value="@../../assets/css/application.css" />
+        <java.net.URL value="@../../assets/css/dark-theme.css" />
+    </stylesheets>
+
+</AnchorPane>
